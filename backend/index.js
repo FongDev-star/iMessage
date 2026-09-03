@@ -2,8 +2,9 @@ import express, { json } from "express"
 import "dotenv/config"
 import { connectDB } from "./lib/db.js";
 import {clerkMiddleware} from "@clerk/express";
-import {cors} from "cors";
+import pkg from "cors";
 
+const {cors} = pkg;
 
 const app = express();
 const PORT = process.env.PORT
@@ -21,6 +22,7 @@ app.listen(PORT, ()=>{
   connectDB();
   console.log("Server is running on PORT: ", PORT);
 });
+
 
 
 
