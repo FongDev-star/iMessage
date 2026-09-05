@@ -2,16 +2,16 @@ import express, { json } from "express"
 import "dotenv/config"
 import { connectDB } from "./lib/db.js";
 import {clerkMiddleware} from "@clerk/express";
-import pkg from "cors";
+import cors from "cors";
 
-const {cors} = pkg;
+
 
 const app = express();
 const PORT = process.env.PORT
 const FRONTEND_URL = process.env.FRONTEND_URL
 
 app.use(express.json());
-app.use(cors({origin: FRONTEND_URL, Credential:true}));
+app.use(cors({origin: FRONTEND_URL, credentials:true}));
 app.use(clerkMiddleware());
 
 app.get("/health", (req, res)=>{
